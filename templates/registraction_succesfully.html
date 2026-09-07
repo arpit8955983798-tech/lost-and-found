@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Successful</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
+            padding: 20px;
+        }
+
+        .success-card {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .check {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #28a745;
+            color: white;
+            font-size: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .login-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 13px;
+            background: #1d4ed8;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .login-btn:hover {
+            background: #153eaa;
+        }
+
+        .college-name {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="success-card">
+
+        <div class="check">✓</div>
+
+        <h1>Registration Successful!</h1>
+
+        <p>
+            Your account has been created successfully.
+            You can now login and start using the
+            Lost & Found Portal.
+        </p>
+
+        <a href="/login" class="login-btn">
+            Login Now
+        </a>
+
+        <div class="college-name">
+            College Lost & Found Portal
+        </div>
+
+    </div>
+
+</body>
+</html>

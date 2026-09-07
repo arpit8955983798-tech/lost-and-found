@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Lost Item</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+ <nav class="navbar">
+
+    <button class="menu-btn" type="button">☰</button>
+
+    <div class="logo">
+        Lost<span>Link</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+        <a href="/about">About</a>
+        <a href="/feedback">Feedback</a>
+    </div>
+
+</nav>
+
+
+    <section class="form-section">
+
+        <div class="form-container">
+
+            <h1>Report Lost Item</h1>
+
+               <p class="form-description">
+    Provide details about the item you lost.
+</p>
+
+           <form method="POST" enctype="multipart/form-data">
+
+                <label>Item Name <span class="required">*</span></label>
+                <input
+                    type="text"
+                    name="item_name"
+                    placeholder="e.g. Black Samsung Mobile"
+                    required
+                >
+
+               <label>Category <span class="required">*</span></label>
+
+              <select name="category" required>
+    <option value="">Select Category</option>
+    <option value="Mobile">Mobile</option>
+    <option value="Wallet">Wallet</option>
+    <option value="Keys">Keys</option>
+    <option value="Documents">Documents</option>
+    <option value="Bag">Bag</option>
+    <option value="Electronics">Electronics</option>
+    <option value="Water Bottle">Water Bottle</option>
+    <option value="Jewellery">Jewellery</option>
+    <option value="Earbuds">Earbuds</option>
+    <option value="Other">Other</option>
+</select>
+
+                <label>Description</label>
+
+                <textarea
+                    name="description"
+                    placeholder="Describe the item..."
+                    rows="4"
+                ></textarea>
+                
+                <label>Item Photo</label>
+<input type="file" name="image" accept="image/*" capture="environment">
+
+
+                <label>Lost Date <span class="required">*</span></label>
+
+                <input
+                    type="date"
+                    name="lost_date"
+                    required
+                >
+
+
+                 <label>Lost Date <span class="required">*</span></label>
+
+                <input
+                    type="text"
+                    name="lost_location"
+                    placeholder="e.g. College Library"
+                    required
+                >
+
+
+                <label>Contact Information <span class="required">*</span></label>
+
+                <input
+                    type="text"
+                    name="contact"
+                    placeholder="Phone or Email"
+                    required
+                >
+
+<label>Colour <span class="required">*</span></label>
+<input
+    type="text"
+    name="colour"
+    placeholder="e.g. Black"
+    required
+>
+
+<label>Brand</label>
+<input
+    type="text"
+    name="brand"
+    placeholder="e.g. Samsung"
+>
+
+<label>Approx Lost Time</label>
+<input
+    type="time"
+    name="lost_time"
+>
+                <button type="submit">
+                    Submit Lost Item
+                </button>
+
+            </form>
+
+            {% if matches %}
+    <div class="matches-section">
+        <h2>Possible Matches</h2>
+
+        {% for match in matches %}
+            <div class="match-card">
+                {% if match.item.image %}
+    <img src="{{ url_for('uploaded_file', filename=match.item.image) }}"
+         alt="{{ match.item.item_name }}"
+         class="match-image">
+{% endif %}
+                <h3>{{ match.item.item_name }}</h3>
+
+                <p>
+                    <strong>Similarity:</strong>
+                    {{ match.score }}%
+                </p>
+
+                <p>{{ match.item.description }}</p>
+
+                <p>
+                    <strong>Category:</strong>
+                    {{ match.item.category }}
+                </p>
+
+                <p>
+                    <strong>Colour:</strong>
+                    {{ match.item.colour }}
+                </p>
+
+                <p>
+                    <strong>Brand:</strong>
+                    {{ match.item.brand }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+        </div>
+
+    </section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    }
+
+});
+</script>
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Found Item</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+          <style>
+body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+        linear-gradient(rgba(5, 25, 55, 0.35), rgba(5, 25, 55, 0.35)),
+        url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Form area transparent */
+.form-section {
+    background: transparent !important;
+}
+
+/* Form ko glass effect */
+.form-container {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.35);
+}
+
+/* Heading */
+.form-container h1 {
+    color: #087ea4;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <button class="menu-btn" type="button">☰</button>
+
+    <div class="logo">
+        Lost<span>Link</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+        <a href="/about">About</a>
+        <a href="/feedback">Feedback</a>
+    </div>
+
+</nav>
+
+<section class="form-section">
+    <div class="form-container">
+
+        <h1>Report Found Item</h1>
+        <p>Provide details about the item you found.</p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <label>Item Name <span class="required">*</span></label>
+            <input type="text" name="item_name"
+                   placeholder="e.g. Black Samsung Mobile" required>
+
+            <label>Category <span class="required">*</span></label>
+           <select name="category" required>
+    <option value="">Select Category</option>
+    <option value="Mobile">Mobile</option>
+    <option value="Wallet">Wallet</option>
+    <option value="Keys">Keys</option>
+    <option value="Documents">Documents</option>
+    <option value="Bag">Bag</option>
+    <option value="Electronics">Electronics</option>
+    <option value="Water Bottle">Water Bottle</option>
+    <option value="Jewellery">Jewellery</option>
+    <option value="Earbuds">Earbuds</option>
+    <option value="Other">Other</option>
+</select>
+
+            <label>Description</label>
+            <textarea name="description"
+                      placeholder="Describe the item..." required></textarea>
+
+                      <label>Item Photos <span class="required">*</span></label>
+<input type="file" name="image" accept="image/*" capture="environment"required>
+
+            <label>Found Date <span class="required">*</span></label>
+            <input type="date" name="found_date" required>
+
+            <label>Found Location <span class="required">*</span></label>
+            <input type="text" name="found_location"
+                   placeholder="e.g. College Library" required>
+
+            <label>Contact Information <span class="required">*</span></label>
+            <input type="text" name="contact"
+                   placeholder="Phone or Email" required>
+                   
+<label>Colour <span class="required">*</span></label>
+<input
+    type="text"
+    name="colour"
+    placeholder="e.g. Black"
+    required
+>
+
+<label>Brand</label>
+<input
+    type="text"
+    name="brand"
+    placeholder="e.g. Samsung"
+>
+
+<label>Approx Found Time</label>
+<input
+    type="time"
+    name="found_time"
+>
+            <button type="submit">Submit Found Item</button>
+
+        </form>
+
+    </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    }
+
+});
+</script>
+</body>
+</html>

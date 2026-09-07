@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Successful - LostLink</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(rgba(5, 25, 55, 0.35), rgba(5, 25, 55, 0.35)),
+                url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .success-card {
+            width: 90%;
+            max-width: 550px;
+            padding: 45px 30px;
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 22px;
+
+            box-shadow: 0 15px 45px rgba(0,0,0,0.35);
+        }
+
+        .success-icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #087ea4;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #333;
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+
+        .home-btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #08bfe8;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .home-btn:hover {
+            background: #087ea4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="success-card">
+
+        <div class="success-icon">✅</div>
+
+        <h1>Found Item Reported Successfully!</h1>
+
+        <p>
+            Your found item has been added to LostLink.
+        </p>
+
+        <a href="/" class="home-btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+</html>

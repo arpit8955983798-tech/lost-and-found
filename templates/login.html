@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Lost & Found</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <!-- Left Side -->
+        <div class="login-left">
+            
+            <h1>MANIPAL UNIVERSITY JAIPUR</h1>
+
+<h2>WELCOME TO MUJ LOST AND FOUND</h2>
+
+<p>
+    Report lost items, find reported items, and help
+    return belongings to their rightful owners.
+</p>
+
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+
+            <h1>Welcome Back</h1>
+
+            <p class="login-subtitle">
+                Sign in to continue to Lost & Found
+            </p>
+            {% if error %}
+<div class="login-error">
+    ⚠️ {{ error }}
+</div>
+{% endif %}
+
+            <form action="/login" method="POST">
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label>Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="register-link">
+                Don't have an account?
+                <a href="{{ url_for('register') }}">Create Account</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

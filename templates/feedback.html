@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback - LostLink</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e3a5f);
+            color: white;
+        }
+
+        /* Navbar */
+        .navbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: rgba(0, 0, 0, 0.35);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Feedback Section */
+        .feedback-section {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .feedback-card {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+        }
+
+        .feedback-card h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border-radius: 10px;
+            border: 1px solid #64748b;
+            background: rgba(255,255,255,0.95);
+            color: #111827;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 22px;
+        }
+
+        select:focus,
+        textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #38bdf8;
+            color: #082f49;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .rating-title {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .feedback-card {
+                padding: 25px;
+            }
+        }
+        .feedback-page {
+    min-height: 100vh !important;
+    background-image: url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    }
+    .success-message {
+    width: 90%;
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 15px 20px;
+
+    background: rgba(40, 167, 69, 0.95);
+    color: white;
+
+    border-radius: 12px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+/* ===== Feedback Page Final Design ===== */
+
+.feedback-page {
+    min-height: 100vh;
+    background-image: url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Feedback card */
+.feedback-card {
+    width: 90%;
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 35px;
+    border-radius: 22px;
+    background: rgba(10, 25, 50, 0.82);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+/* Heading */
+.feedback-card h1,
+.feedback-card h2 {
+    color: white;
+    text-align: center;
+}
+
+/* Labels */
+.feedback-card label {
+    color: white;
+    font-weight: 600;
+}
+
+/* Inputs */
+.feedback-card input,
+.feedback-card textarea,
+.feedback-card select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+/* Submit button */
+.feedback-card button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #00a8e8;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.feedback-card button:hover {
+    transform: translateY(-2px);
+}
+
+/* Success message */
+.success-message {
+    width: 90%;
+    max-width: 650px;
+    margin: 25px auto 0;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: rgba(40, 167, 69, 0.95);
+    color: white;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .feedback-page {
+        background-attachment: scroll;
+        background-position: center;
+    }
+
+    .feedback-card {
+        width: 92%;
+        margin: 30px auto;
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .success-message {
+        width: 92%;
+        margin-top: 20px;
+        font-size: 15px;
+    }
+}
+    </style>
+</head>
+
+<body class="feedback-page">
+    {% if success %}
+<div class="success-message">
+    ✓ {{ success }}
+</div>
+{% endif %}
+
+    <!-- Navbar -->
+  <nav class="navbar">
+
+    <button class="menu-btn" type="button">☰</button>
+
+    <div class="logo">
+        Lost<span>Link</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+        <a href="/about">About</a>
+        <a href="/feedback">Feedback</a>
+    </div>
+
+</nav>
+
+
+    <!-- Feedback -->
+    <section class="feedback-section">
+
+        <div class="feedback-card">
+
+            <h1>Share Your Feedback</h1>
+
+            <p class="subtitle">
+                Help us improve the LostLink experience.
+            </p>
+
+            <form method="POST">
+
+                <label class="rating-title">
+                    How would you rate LostLink?
+                </label>
+
+                <select name="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="5">★★★★★ Excellent</option>
+                    <option value="4">★★★★ Very Good</option>
+                    <option value="3">★★★ Good</option>
+                    <option value="2">★★ Poor</option>
+                    <option value="1">★ Very Poor</option>
+                </select>
+
+
+                <label>
+                    Your Feedback
+                </label>
+
+                <textarea
+                    name="message"
+                    placeholder="Tell us about your experience..."
+                    required></textarea>
+
+
+                <button type="submit">
+                    Submit Feedback
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+
+});
+</script>
+
+</body>
+</html>

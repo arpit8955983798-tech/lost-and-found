@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Lost & Found</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+<nav class="navbar">
+
+    <button type="button" class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </button>
+
+    <div class="logo">
+        Lost<span>&</span>found
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+    </div>
+
+</nav>
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("navLinks");
+
+    if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+        menu.style.setProperty("display", "none", "important");
+    } else {
+        menu.classList.add("active");
+        menu.style.setProperty("display", "flex", "important");
+    }
+}
+</script>
+
+    <section class="search-section">
+
+        <h1>Search Results</h1>
+
+        {% if query %}
+            <p>Results for: <strong>{{ query }}</strong></p>
+        {% else %}
+            <p>All reported items</p>
+        {% endif %}
+
+        <hr>
+
+        <h2>Lost Items</h2>
+
+        {% if lost_items %}
+            {% for item in lost_items %}
+                <div class="item-card">
+                    <h3>{{ item.item_name }}</h3>
+                    <p><strong>Category:</strong> {{ item.category }}</p>
+                    <p><strong>Description:</strong> {{ item.description }}</p>
+                    <p><strong>Lost Date:</strong> {{ item.lost_date }}</p>
+                    <p><strong>Location:</strong> {{ item.lost_location }}</p>
+                    <p><strong>Contact:</strong> {{ item.contact }}</p>
+                    {% if item.image %}
+<img src="{{ url_for('static', filename='uploads/' + item.image) }}"
+     alt="Item Image"
+     style="width:200px; border-radius:10px;">
+{% endif %}
+
+<p><strong>Colour:</strong> {{ item.colour }}</p>
+<p><strong>Brand:</strong> {{ item.brand }}</p>
+<p><strong>Approx Time:</strong> {{ item.lost_time }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No matching lost items found.</p>
+        {% endif %}
+
+
+        <h2>Found Items</h2>
+
+        {% if found_items %}
+            {% for item in found_items %}
+                <div class="item-card">
+                    <h3>{{ item.item_name }}</h3>
+                    <p><strong>Category:</strong> {{ item.category }}</p>
+                    <p><strong>Description:</strong> {{ item.description }}</p>
+                    <p><strong>Found Date:</strong> {{ item.found_date }}</p>
+                    <p><strong>Location:</strong> {{ item.found_location }}</p>
+                    <p><strong>Contact:</strong> {{ item.contact }}</p>
+                    {% if item.image %}
+<img src="{{ url_for('uploaded_file', filename=item.image) }}"
+     alt="Item Image"
+     style="width:200px; height:150px; object-fit:cover; border-radius:10px;">
+     alt="Item Image"
+     style="width:200px; border-radius:10px;">
+{% endif %}
+
+<p><strong>Colour:</strong> {{ item.colour }}</p>
+<p><strong>Brand:</strong> {{ item.brand }}</p>
+<p><strong>Approx Time:</strong> {{ item.found_time }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No matching found items found.</p>
+        {% endif %}
+
+    </section>
+</body>
+</html>

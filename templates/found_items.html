@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Found Items</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-image:
+        linear-gradient(rgba(5, 20, 45, 0.45), rgba(5, 20, 45, 0.45)),
+        url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Found Items section */
+.items-section {
+    min-height: 100vh;
+    background: transparent !important;
+    padding: 120px 30px 60px !important;
+}
+
+/* Main content card */
+.items-section .found-card {
+    background: rgba(255, 255, 255, 0.92) !important;
+    color: #222 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    border-radius: 20px;
+    padding: 35px;
+    max-width: 900px;
+    margin: 30px auto;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+/* Text */
+.items-section .found-card h2 {
+    color: #102a56 !important;
+}
+
+.items-section .found-card p {
+    color: #333 !important;
+}
+
+.items-section .found-card strong {
+    color: #111 !important;
+}
+
+</style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+    <button class="menu-btn" type="button"
+        onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    ☰
+</button>
+
+    <div class="logo">
+        Lost<span>Link</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+        <a href="/about">About</a>
+        <a href="/feedback">Feedback</a>
+    </div>
+
+</nav>
+    <section class="items-section">
+
+        <h1>Found Items</h1>
+
+        <p>Items reported as found.</p>
+
+        {% if items %}
+
+            {% for item in items %}
+
+                <div class="feature-card found-card">
+                    
+                    {% if item.image %}
+    <img src="{{ url_for('static', filename='uploads/' + item.image) }}"
+         alt="{{ item.item_name }}"
+         style="width:200px; height:200px; object-fit:cover;">
+{% endif %}
+
+                    <h2>{{ item.item_name }}</h2>
+
+                    <p><strong>Category:</strong> {{ item.category }}</p>
+
+                    <p><strong>Description:</strong> {{ item.description }}</p>
+
+                    <p><strong>Found Date:</strong> {{ item.found_date }}</p>
+
+                    <p><strong>Location:</strong> {{ item.found_location }}</p>
+
+                    <p><strong>Contact:</strong> {{ item.contact }}</p>
+
+                    <p><strong>Colour:</strong> {{ item.colour }}</p>
+
+                    <p><strong>Brand:</strong> {{ item.brand }}</p>
+
+                    <p><strong>Approx Found Time:</strong> {{ item.found_time }}</p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No found items reported yet.</p>
+
+        {% endif %}
+
+    </section>
+
+</body>
+</html>

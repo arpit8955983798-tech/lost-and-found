@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Owner Feedback - LostLink</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background:
+                linear-gradient(rgba(0, 25, 55, 0.55), rgba(0, 20, 45, 0.65)),
+                url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}")
+                center center / cover fixed no-repeat;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+            background: rgba(5, 20, 40, 0.82);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00d9ff;
+        }
+
+        .owner-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* MAIN CARD */
+        .main-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 45px auto;
+
+            padding: 35px;
+
+            background: rgba(255,255,255,0.93);
+            color: #111;
+
+            border-radius: 22px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+        }
+
+        .heading-line {
+            width: 70px;
+            height: 4px;
+            background: #00bde8;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        /* FEEDBACK CARD */
+        .feedback-card {
+            position: relative;
+
+            padding: 22px 25px;
+            margin-bottom: 18px;
+
+            background: #f8fbff;
+
+            border-left: 5px solid #00bde8;
+            border-radius: 14px;
+
+            box-shadow: 0 5px 16px rgba(0,0,0,0.10);
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-2px);
+            transition: 0.2s;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.16);
+        }
+
+        .rating {
+            color: #f5a623;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .user-info {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .feedback-id {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+
+            color: #999;
+            font-size: 13px;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #777;
+            font-size: 18px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .owner-title {
+                font-size: 14px;
+            }
+
+            .main-container {
+                width: 94%;
+                margin: 25px auto;
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .feedback-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Lost<span>Link</span>
+        </div>
+
+        <div class="owner-title">
+            Owner Dashboard
+        </div>
+
+    </nav>
+
+
+    <div class="main-container">
+
+        <h1>📩 User Feedback</h1>
+
+        <div class="heading-line"></div>
+
+
+        {% if feedbacks %}
+
+            {% for feedback in feedbacks %}
+
+                <div class="feedback-card">
+
+                    <div class="feedback-id">
+                        #{{ feedback.id }}
+                    </div>
+
+                    <div class="rating">
+                        ⭐ {{ feedback.rating }}/5
+                    </div>
+
+                    <div class="message">
+                        {{ feedback.message }}
+                    </div>
+
+                    <div class="user-info">
+                        👤 User ID: {{ feedback.user_id }}
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+                📭 No feedback submitted yet.
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

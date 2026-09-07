@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About - LostLink</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+    body {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(5, 20, 45, 0.30), rgba(5, 20, 45, 0.35)),
+        url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+        /* Navbar */
+        .navbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: rgba(0, 0, 0, 0.35);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 60px 20px;
+        }
+
+        .about-card {
+            max-width: 1000px;
+            margin: auto;
+            padding: 45px;
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+        }
+
+        .about-card h1 {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .about-card h1 span {
+            color: #38bdf8;
+        }
+
+        .intro {
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 17px;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        .about-card h2 {
+            color: #38bdf8;
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+
+        .about-card p {
+            color: #e2e8f0;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .tech-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.25);
+            border-radius: 12px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .tech-box p {
+            margin: 0;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .about-card {
+                padding: 25px;
+            }
+
+            .about-card h1 {
+                font-size: 30px;
+            }
+        }
+        /* ===== ABOUT CARD FIX ===== */
+
+.about-card {
+    background: rgba(10, 35, 70, 0.78) !important;
+    color: white !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+}
+
+.about-card h1,
+.about-card h2,
+.about-card h3 {
+    color: white !important;
+}
+
+.about-card h1 span,
+.about-card h2 span {
+    color: #00e5ff !important;
+}
+
+.about-card p {
+    color: #f1f7ff !important;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+    <button class="menu-btn" type="button">☰</button>
+
+    <div class="logo">
+        Lost<span>Link</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+        <a href="/about">About</a>
+        <a href="/feedback">Feedback</a>
+    </div>
+
+</nav>
+
+
+    <!-- About -->
+    <section class="about-section">
+
+        <div class="about-card">
+
+            <h1>About <span>LostLink</span></h1>
+
+            <p class="intro">
+                An intelligent Lost and Found Management System
+                designed to make finding misplaced belongings easier,
+                faster, and more efficient.
+            </p>
+
+
+            <h2>What is LostLink?</h2>
+
+            <p>
+                LostLink is a web-based intelligent Lost and Found
+                Management System designed to help students, institutions,
+                and shared communities report, search, and recover
+                misplaced belongings more efficiently.
+            </p>
+
+
+            <h2>The Problem</h2>
+
+            <p>
+                Traditional lost-and-found processes generally depend on
+                manual notices, verbal communication, or simple keyword
+                searches. This can make it difficult to identify a matching
+                item when lost and found reports use different descriptions.
+            </p>
+
+
+            <h2>Our Solution</h2>
+
+            <p>
+                LostLink addresses this problem by combining a centralized
+                database with Natural Language Processing (NLP)-based
+                similarity matching.
+            </p>
+
+            <p>
+                Users can submit detailed reports for lost or found items,
+                including item name, category, description, colour, brand,
+                location, and date.
+            </p>
+
+
+            <h2>Intelligent Matching</h2>
+
+            <p>
+                When a report is submitted, the system compares it with
+                relevant opposite-type reports. Text descriptions are
+                converted into TF-IDF vectors and compared using cosine
+                similarity.
+            </p>
+
+            <p>
+                Additional similarity scores for location, date, category,
+                and colour are combined through a weighted scoring mechanism
+                to produce an overall possible-match percentage.
+            </p>
+
+
+            <div class="tech-box">
+                <p>
+                    <strong>Technologies Used:</strong>
+                    Python, Flask, SQLite, HTML, CSS, Bootstrap,
+                    and Scikit-learn.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+
+});
+</script>
+</body>
+</html>

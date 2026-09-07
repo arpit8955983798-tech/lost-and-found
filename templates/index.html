@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lost & Found</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="home-page">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Lost<span>&</span>Found</div>
+        <button class="menu-btn">☰</button>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/lost-items">Lost Items</a>
+            <a href="/found-items">Found Items</a>
+            <a href="/about">About</a>
+            <a href="/feedback">Feedback</a>
+            <a href="/notifications">🔔 Notifications</a>
+            {% if session.get("user_id") %}
+    <a href="/logout" class="login-btn">Logout</a>
+{% else %}
+    <a href="/login" class="login-btn">Login</a>
+    <a href="/register" class="login-btn">Register</a>
+{% endif %}
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">LOST SOMETHING? FOUND SOMETHING?</p>
+
+            <h1>
+                Help items find<br>
+                their <span>way home.</span>
+            </h1>
+
+            <p class="description">
+                Report lost or found items and help connect them
+                with their rightful owners.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="/report-lost" class="lost-btn">Report Lost Item</a>
+                <a href="/report-found" class="found-btn">Report Found Item</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Search Section -->
+    <section class="search-section">
+
+        <h2>Find a Lost Item</h2>
+
+        <p>Search through reported lost and found items.</p>
+
+    <form class="search-box" action="/search" method="GET">
+
+    <input
+        type="text"
+        name="query"
+        placeholder="Search item... e.g. black wallet"
+    >
+
+    <select name="category">
+    <option value="">All Categories</option>
+    <option value="Mobile">Mobile</option>
+    <option value="Wallet">Wallet</option>
+    <option value="Keys">Keys</option>
+    <option value="Documents">Documents</option>
+    <option value="Bag">Bag</option>
+    <option value="Electronic">Electronic</option>
+    <option value="Water Bottle">Water Bottle</option>
+    <option value="Jewellery">Jewellery</option>
+    <option value="Earbuds">Earbuds</option>
+    <option value="Other">Other</option>
+</select>
+
+    <button type="submit">Search</button>
+
+</form>
+    </section>
+
+
+    <!-- Features -->
+    <section class="features">
+
+        <a href="/report-lost" class="feature-card">
+            <div class="icon">📢</div>
+            <h3>Report Lost</h3>
+            <p>
+                Tell us about your lost item so others
+                can help you find it.
+            </p>
+        </a>
+
+
+        <a href="/found-items" class="feature-card">
+            <div class="icon">🔎</div>
+            <h3>Search Items</h3>
+            <p>
+                Search reported items using category,
+                location and keywords.
+            </p>
+        </a>
+
+
+        <a href="/found-items" class="feature-card">
+            <div class="icon">🤝</div>
+            <h3>Return Items</h3>
+            <p>
+                Connect with the owner and help return
+                the item safely.
+            </p>
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Lost & Found Management System</p>
+    </footer>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+});
+</script>
+
+</body>
+</html>

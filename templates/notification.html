@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Lost & Found</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+          <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(rgba(5,20,45,.65), rgba(5,20,45,.75)),
+    url("{{ url_for('static', filename='images/college.jpg/college.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.notifications-page {
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 25px;
+}
+
+.notifications-title {
+    text-align: center;
+    font-size: 42px;
+    color: #00e5ff;
+}
+
+.notifications-subtitle {
+    text-align: center;
+    color: #dcecff;
+    margin-bottom: 40px;
+}
+
+.no-notifications {
+    text-align: center;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: 55px 25px;
+}
+
+.bell {
+    font-size: 55px;
+}
+
+.no-notifications h2 {
+    color: white;
+}
+
+.no-notifications p {
+    color: #dcecff;
+}
+
+.home-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#00bcd4,#006eff);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+   <div class="notifications-page">
+
+    <h1 class="notifications-title">🔔 Notifications</h1>
+
+    <p class="notifications-subtitle">
+        Stay updated with your LostLink activity
+    </p>
+
+    <div class="no-notifications">
+
+        <div class="bell">🔔</div>
+
+        <h2>No notifications yet</h2>
+
+        <p>You don't have any notifications right now.</p>
+
+        <a href="{{ url_for('home') }}" class="home-btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
